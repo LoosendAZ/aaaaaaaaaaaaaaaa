@@ -10,8 +10,11 @@ class Result {
     public static int findLastBinary(String s) {
         String bin = "";
         for(char c : s.toCharArray()){
-            String current = Integer.toBinaryString((int) c); // Get ascii of current character, and convert to binary string
-            bin += String.format("%1$8s", current).replace(' ', '0'); // Pad 0 if length is not 8.
+            int ascii = (int)c;  // Convert char c into ASCII integer, e.g. R to 82
+            String asciiBin =  Integer.toBinaryString(ascii); // Convert ascii integer to binary string, e.g. 82 to 1010010
+            String asciiBinPadded = String.format("%1$8s", current).replace(' ', '0'); // Left pad 0 if lenghth is not 8
+            
+            bin += asciiBinPadded; // Accumulate binary strings for each character
         }
         
         int i = 0;
