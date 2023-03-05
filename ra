@@ -1,0 +1,29 @@
+class Result {
+
+    /*
+     * Complete the 'findLastBinary' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts STRING s as parameter.
+     */
+
+    public static int findLastBinary(String s) {
+        String bin = "";
+        for(char c : s.toCharArray()){
+            String current = Integer.toBinaryString((int) c); // Get ascii of current character, and convert to binary string
+            bin += String.format("%1$8s", current).replace(' ', '0'); // Pad 0 if length is not 8.
+        }
+        
+        int i = 0;
+        while(true){
+            String current = Integer.toBinaryString(i);
+            if(bin.contains(current)){
+                i++;
+            }
+            else{
+                break;
+            }
+        }
+        
+        return i-1;
+    }
